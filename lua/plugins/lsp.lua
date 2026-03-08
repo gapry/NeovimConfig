@@ -68,41 +68,33 @@ return {
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
       end
 
-      local lspconfig = require("lspconfig")
+      vim.lsp.config('clangd', {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
 
-      local servers = {
-        "clangd",
-        "rust_analyzer",
-        "pyright",
-      }
-
-      local server_configs = {
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              cargo = {
-                allFeatures = true,
-              },
-              checkOnSave = {
-                command = "clippy",
-              },
-            },
+      vim.lsp.config('rust_analyzer', {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = { allFeatures = true },
+            checkOnSave = { command = "clippy" },
           },
         },
-      }
+      })
 
-      for _, server in ipairs(servers) do
-        local opts = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-
-        if server_configs[server] then
-          opts = vim.tbl_deep_extend("force", opts, server_configs[server])
-        end
-
-        lspconfig[server].setup(opts)
-      end
+      vim.lsp.config('pyright', {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
+      
+      vim.lsp.enable({
+        "clangd",
+        "rust_analyzer",
+        "pyright"
+      })
     end,
   },
 }
+
