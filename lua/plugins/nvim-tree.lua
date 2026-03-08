@@ -1,8 +1,8 @@
 return {
   "nvim-tree/nvim-tree.lua",
 
-  dependencies = { 
-    "nvim-tree/nvim-web-devicons" 
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
   },
 
   init = function()
@@ -54,4 +54,3 @@ return {
     vim.keymap.set("n", "<leader>fe", "<cmd>NvimTreeFocus<CR>", { desc = "Focus File Explorer" })
   end,
 }
-

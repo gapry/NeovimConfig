@@ -18,4 +18,3 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 
 require("config.lazy")
-

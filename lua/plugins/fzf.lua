@@ -2,7 +2,7 @@ return {
   "ibhagwan/fzf-lua",
 
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
 
   config = function()
@@ -26,6 +26,5 @@ return {
     vim.keymap.set("n", "<leader>ps", fzf.live_grep, { desc = "Grep Project" })
     vim.keymap.set("n", "<leader>pb", fzf.buffers, { desc = "Find Buffers" })
     vim.keymap.set("n", "<leader>psy", fzf.lsp_document_symbols, { desc = "LSP Symbols" })
-  end
+  end,
 }
-

@@ -24,4 +24,3 @@ if not ok then
   return
 end
 lazy.setup("plugins")
-

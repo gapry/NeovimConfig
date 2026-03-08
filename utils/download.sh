@@ -31,6 +31,6 @@ if ! tar -xzf "$TMP_PATH/main.tar.gz" -C "$TARGET_PATH" --strip-components=1; th
 fi
 
 rm -rf "$TMP_PATH"
-rm -f "$TARGET_PATH/install.sh"
+rm -f "$TARGET_PATH/.stylua.toml"
 rm -rf "$TARGET_PATH/utils"
 
