@@ -68,12 +68,10 @@ return {
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
       end
 
-      local lspconfig = require("lspconfig")
-
-      local servers = {
+      local servers = { 
         "clangd",
         "rust_analyzer",
-        "pyright",
+        "pyright"
       }
 
       local server_configs = {
@@ -81,10 +79,10 @@ return {
           settings = {
             ["rust-analyzer"] = {
               cargo = {
-                allFeatures = true,
+                allFeatures = true
               },
               checkOnSave = {
-                command = "clippy",
+                command = "clippy"
               },
             },
           },
@@ -101,8 +99,11 @@ return {
           opts = vim.tbl_deep_extend("force", opts, server_configs[server])
         end
 
-        lspconfig[server].setup(opts)
+        vim.lsp.config(server, opts)
       end
+
+      vim.lsp.enable(servers)
     end,
   },
 }
+
