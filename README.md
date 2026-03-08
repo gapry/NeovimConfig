@@ -1,4 +1,4 @@
 ## Usage
 ```bash
-$ sh install.sh
+$ sh utils/install.sh
 ```
