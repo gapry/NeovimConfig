@@ -9,12 +9,12 @@ return {
     vim.g.copilot_enabled = 0
 
     vim.g.copilot_no_tab_map = true
-    
+
     vim.keymap.set("i", "<C-L>", 'copilot#Accept("<CR>")', {
       silent = true,
       expr = true,
       replace_keycodes = false,
-      desc = "Copilot: Accept suggestion"
+      desc = "Copilot: Accept suggestion",
     })
 
     vim.keymap.set("n", "<leader>ce", function()
@@ -28,4 +28,3 @@ return {
     end, { desc = "AI: Toggle Copilot" })
   end,
 }
-

@@ -5,15 +5,15 @@ return {
     version = "*",
 
     opts = {
-      keymap = { 
-        preset = "default" 
+      keymap = {
+        preset = "default",
       },
       sources = {
-        default = { 
+        default = {
           "lsp",
           "path",
           "snippets",
-          "buffer"
+          "buffer",
         },
       },
     },
@@ -28,17 +28,17 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
 
-    dependencies = { 
-      "williamboman/mason.nvim" 
+    dependencies = {
+      "williamboman/mason.nvim",
     },
 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { 
+        ensure_installed = {
           "clangd",
           "rust_analyzer",
           "pyright",
-          "texlab"
+          "texlab",
         },
       })
     end,
@@ -53,13 +53,13 @@ return {
     },
 
     config = function()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       local on_attach = function(_, bufnr)
-        local opts = { 
-          buffer = bufnr, 
-          noremap = true, 
-          silent = true 
+        local opts = {
+          buffer = bufnr,
+          noremap = true,
+          silent = true,
         }
 
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -69,11 +69,11 @@ return {
         vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
       end
 
-      local servers = { 
+      local servers = {
         "clangd",
         "rust_analyzer",
         "pyright",
-        "texlab"
+        "texlab",
       }
 
       local server_configs = {
@@ -81,10 +81,10 @@ return {
           settings = {
             ["rust-analyzer"] = {
               cargo = {
-                allFeatures = true
+                allFeatures = true,
               },
               checkOnSave = {
-                command = "clippy"
+                command = "clippy",
               },
             },
           },
@@ -100,7 +100,7 @@ return {
                   "-pdf",
                   "-interaction=nonstopmode",
                   "-synctex=1",
-                  "%f"
+                  "%f",
                 },
               },
               forwardSearch = {
@@ -108,11 +108,11 @@ return {
                 args = {
                   "--synctex-forward",
                   "%l:1:%f",
-                  "%p"
+                  "%p",
                 },
               },
               chktex = {
-                onOpenAndSave = true
+                onOpenAndSave = true,
               },
             },
           },
@@ -136,4 +136,3 @@ return {
     end,
   },
 }
-

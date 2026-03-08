@@ -19,5 +19,5 @@ return {
       vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<cr>", { desc = "LaTeX: View PDF" })
       vim.keymap.set("n", "<leader>lc", "<cmd>VimtexClean<cr>", { desc = "LaTeX: Clean auxiliary files" })
     end,
-  }
+  },
 }
