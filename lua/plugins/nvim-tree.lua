@@ -28,11 +28,18 @@ return {
 
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function(data)
+        if not data.file or data.file == "" then
+          vim.notify("Nvim-tree: No target file specified.", vim.log.levels.INFO)
+          return
+        end
+
         local directory = vim.fn.isdirectory(data.file) == 1
 
         if directory then
-          vim.cmd.cd(data.file)
-          require("nvim-tree.api").tree.open()
+          local ok = pcall(vim.cmd.cd, data.file)
+          if ok then
+            require("nvim-tree.api").tree.open()
+          end
         end
       end,
     })
