@@ -11,6 +11,8 @@ return {
   end,
 
   opts = {
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     view = {
       width = 30,
       side = "left",
@@ -20,6 +22,10 @@ return {
     },
     git = {
       enable = true,
+    },
+    update_focused_file = {
+      enable = true,
+      update_root = true,
     },
   },
 
@@ -36,9 +42,11 @@ return {
         local directory = vim.fn.isdirectory(data.file) == 1
 
         if directory then
-          local ok = pcall(vim.cmd.cd, data.file)
+          local ok, err = pcall(vim.api.nvim_set_current_dir, data.file)
           if ok then
             require("nvim-tree.api").tree.open()
+          else
+            vim.notify("Failed to change directory: " .. tostring(err), vim.log.levels.ERROR)
           end
         end
       end,
