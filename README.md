@@ -1,1 +1,4 @@
-# NeovimConfig
+## Usage
+```bash
+$ sh install.sh
+```
