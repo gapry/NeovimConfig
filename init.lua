@@ -1,12 +1,14 @@
 vim.g.mapleader = " "
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.clipboard = "unnamedplus"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
-vim.opt.fileencodings = { "utf-8", "ucs-bom", "latin1", "cp1252" }
+local opt = vim.opt
+
+opt.number = true
+opt.relativenumber = true
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.clipboard = "unnamedplus"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+opt.fileencodings = { "utf-8", "ucs-bom", "latin1", "cp1252" }
 
