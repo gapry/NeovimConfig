@@ -2,6 +2,6 @@
 
 TARGET="$HOME/.config/nvim"
 
-cp init.lua "$TARGET/"
+cp ./nvim/init.lua "$TARGET/"
 
-rsync -av ./lua/ "$TARGET/lua/"
+rsync -av ./nvim/lua/ "$TARGET/lua/"

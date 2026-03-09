@@ -24,13 +24,11 @@ if ! curl -sL "$UPSTREAM" -o "$TMP_PATH/main.tar.gz"; then
 fi
 
 mkdir -p "$TARGET_PATH"
-if ! tar -xzf "$TMP_PATH/main.tar.gz" -C "$TARGET_PATH" --strip-components=1; then
+if ! tar -xzf "$TMP_PATH/main.tar.gz" -C "$TARGET_PATH" --strip-components=2 --wildcards "*/nvim/*"; then
   echo "Failed to extract"
   rm -rf "$TMP_PATH"
   exit 1
 fi
 
 rm -rf "$TMP_PATH"
-rm -f "$TARGET_PATH/.stylua.toml"
-rm -rf "$TARGET_PATH/utils"
 
