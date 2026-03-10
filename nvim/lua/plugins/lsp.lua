@@ -6,7 +6,11 @@ return {
 
     opts = {
       keymap = {
-        preset = "default",
+        preset = "none",
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
       },
       sources = {
         default = {
@@ -14,6 +18,17 @@ return {
           "path",
           "snippets",
           "buffer",
+        },
+      },
+      completion = {
+        list = {
+          selection = { preselect = true, auto_insert = false },
+        },
+        menu = {
+          border = "rounded",
+          draw = {
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+          },
         },
       },
     },
