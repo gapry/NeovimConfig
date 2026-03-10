@@ -27,6 +27,10 @@ return {
       },
     })
 
+    dap.configurations.cpp = {}
+    dap.configurations.c = {}
+    dap.configurations.rust = {}
+
     dapui.setup()
 
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
