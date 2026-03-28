@@ -27,10 +27,9 @@ return {
       },
     })
 
+    -- <project_root>/.vscode/launch.json
     dap.configurations.c = {}
-
     dap.configurations.cpp = {}
-
     dap.configurations.rust = {}
 
     -- https://github.com/rcarriga/nvim-dap-ui/blob/master/doc/nvim-dap-ui.txt
@@ -75,11 +74,12 @@ return {
       },
     })
 
+    vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
     vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step Over" })
     vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debug: Step Into" })
     vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debug: Step Out" })
-    vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
