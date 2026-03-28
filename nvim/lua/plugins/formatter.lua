@@ -10,6 +10,12 @@ return {
     },
 
     format_on_save = false,
+
+    format = {
+      lsp_fallback = true,
+      async = true,
+      timeout_ms = 500,
+    },
   },
 
   config = function(_, opts)
@@ -17,11 +23,7 @@ return {
     conform.setup(opts)
 
     vim.keymap.set({ "n", "v" }, "<leader>f", function()
-      conform.format({
-        lsp_fallback = true,
-        async = true,
-        timeout_ms = 500,
-      })
+      conform.format(opts.format)
     end, { desc = "Format buffer" })
   end,
 }
