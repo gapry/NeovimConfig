@@ -27,6 +27,11 @@ return {
     vim.keymap.set("n", "<leader>pb", fzf.buffers, { desc = "Find Buffers" })
     vim.keymap.set("n", "<leader>psy", fzf.lsp_document_symbols, { desc = "LSP Symbols" })
     vim.keymap.set("n", "<leader>psw", fzf.lsp_live_workspace_symbols, { desc = "LSP Workspace Symbols" })
+    vim.keymap.set("n", "<leader>pr", fzf.oldfiles, { desc = "Recent Files" })
+    vim.keymap.set("n", "<leader>pl", fzf.blines, { desc = "Buffer Lines" })
+    vim.keymap.set("n", "<leader>pp", fzf.resume, { desc = "Resume Last Search" })
+    vim.keymap.set("n", "<leader>pg", fzf.git_status, { desc = "Git Changed Files" })
+    vim.keymap.set("n", "<leader>pw", fzf.grep_cword, { desc = "Grep Word Under Cursor" })
 
     vim.keymap.set("n", "gd", function()
       require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
