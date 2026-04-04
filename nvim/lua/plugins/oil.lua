@@ -26,6 +26,8 @@ return {
       ["<CR>"] = "actions.select",
       ["g."] = "actions.toggle_hidden",
       ["q"] = "actions.close",
+      ["-"] = "actions.parent",
+      ["<C-p>"] = "actions.preview",
     },
 
     use_default_keymaps = false,
