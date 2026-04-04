@@ -43,5 +43,9 @@ return {
     vim.keymap.set("n", "<leader>fe", function()
       require("oil").open(vim.fn.expand("%:p:h"))
     end, { desc = "Explorer (current file)" })
+
+    vim.keymap.set("n", "<leader>E", function()
+      require("oil").open(vim.fn.getcwd())
+    end, { desc = "Explorer (project root)" })
   end,
 }
