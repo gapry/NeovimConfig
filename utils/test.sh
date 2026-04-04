@@ -9,3 +9,4 @@ fi
 cp ./nvim/init.lua "$TARGET/"
 
 rsync -av ./nvim/lua/ "$TARGET/lua/"
+rsync -av ./nvim/lsp/ "$TARGET/lsp/"
