@@ -11,6 +11,7 @@ opt.clipboard = "unnamedplus"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.fileencodings = { "utf-8", "ucs-bom", "latin1", "cp1252" }
+opt.termguicolors = true
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
@@ -38,4 +39,3 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 require("config.lazy")
-
