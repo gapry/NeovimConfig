@@ -41,6 +41,10 @@ return {
       require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
     end, { desc = "Jump to Definition" })
 
+    vim.keymap.set("n", "gr", function()
+      require("fzf-lua").lsp_references({ jump_to_single_result = true })
+    end, { desc = "Find References" })
+
     vim.keymap.set("n", "gb", "<C-o>", { desc = "Jump Back" })
     vim.keymap.set("n", "gf", "<C-i>", { desc = "Jump Forward" })
   end,
