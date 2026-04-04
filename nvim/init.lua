@@ -12,6 +12,10 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.fileencodings = { "utf-8", "ucs-bom", "latin1", "cp1252" }
 opt.termguicolors = true
+opt.signcolumn = "yes"
+opt.undofile = true
+opt.ignorecase = true
+opt.smartcase = true
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
