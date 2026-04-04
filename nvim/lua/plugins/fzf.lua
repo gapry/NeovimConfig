@@ -19,6 +19,10 @@ return {
       },
       files = {
         formatter = "path.filename_first",
+        fd_opts = "--type f --hidden --exclude .git --exclude node_modules --exclude target",
+      },
+      grep = {
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden -g '!.git/'",
       },
     })
 
