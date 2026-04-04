@@ -34,13 +34,5 @@ return {
 
     vim.keymap.set("n", "gb", "<C-o>", { desc = "Jump Back" })
     vim.keymap.set("n", "gf", "<C-i>", { desc = "Jump Forward" })
-
-    vim.api.nvim_create_autocmd("BufEnter", {
-      callback = function()
-        vim.schedule(function()
-          vim.cmd("normal! zz")
-        end)
-      end,
-    })
   end,
 }
