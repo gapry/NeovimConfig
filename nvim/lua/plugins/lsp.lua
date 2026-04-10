@@ -1,5 +1,9 @@
 return {
   {
+    "mfussenegger/nvim-jdtls",
+    dependencies = { "neovim/nvim-lspconfig", "saghen/blink.cmp" },
+  },
+  {
     "saghen/blink.cmp",
 
     version = "*",
@@ -66,6 +70,7 @@ return {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
       "saghen/blink.cmp",
+      "mfussenegger/nvim-jdtls",
     },
 
     config = function()
@@ -75,6 +80,7 @@ return {
           "rust_analyzer",
           "pyright",
           "texlab",
+          "jdtls",
         },
         automatic_enable = true,
       })
