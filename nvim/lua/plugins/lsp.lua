@@ -1,6 +1,7 @@
 return {
   {
     "mfussenegger/nvim-jdtls",
+
     dependencies = { "neovim/nvim-lspconfig", "saghen/blink.cmp" },
   },
   {
@@ -70,7 +71,6 @@ return {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
       "saghen/blink.cmp",
-      "mfussenegger/nvim-jdtls",
     },
 
     config = function()
