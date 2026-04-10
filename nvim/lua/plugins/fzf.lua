@@ -20,13 +20,23 @@ return {
       files = {
         formatter = "path.filename_first",
         fd_opts = "--type f --hidden --exclude .git --exclude node_modules --exclude target",
+        resume = false,
+        actions = {
+          ["default"] = fzf.actions.file_edit,
+        },
       },
       grep = {
         rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden -g '!.git/'",
       },
     })
 
-    vim.keymap.set("n", "<leader>pf", fzf.files, { desc = "Find Files" })
+    vim.keymap.set("n", "<leader>pf", function()
+      if vim.bo.filetype == "oil" then
+        require("oil").close()
+      end
+      fzf.files({ resume = false })
+    end, { desc = "Find Files" })
+
     vim.keymap.set("n", "<leader>ps", fzf.live_grep, { desc = "Grep Project" })
     vim.keymap.set("n", "<leader>pb", fzf.buffers, { desc = "Find Buffers" })
     vim.keymap.set("n", "<leader>psy", fzf.lsp_document_symbols, { desc = "LSP Symbols" })
