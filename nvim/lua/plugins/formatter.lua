@@ -22,7 +22,7 @@ return {
     local conform = require("conform")
     conform.setup(opts)
 
-    vim.keymap.set({ "n", "v" }, "<leader>f", function()
+    vim.keymap.set({ "n", "v" }, "<leader>cf", function()
       conform.format(opts.format)
     end, { desc = "Format buffer" })
   end,
