@@ -21,13 +21,32 @@ return {
         },
       },
       completion = {
+        trigger = {
+          show_on_trigger_character = true,
+          show_in_snippet = true,
+        },
         list = {
-          selection = { preselect = true, auto_insert = false },
+          selection = {
+            preselect = true,
+            auto_insert = false,
+          },
         },
         menu = {
+          auto_show = true,
           border = "rounded",
           draw = {
-            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+            columns = {
+              { "label", "label_description", gap = 1 },
+              { "kind_icon", "kind" },
+              { "source_name" },
+            },
+          },
+        },
+        documentation = {
+          auto_show = true,
+          window = {
+            border = "rounded",
+            scrollbar = true,
           },
         },
       },
