@@ -9,18 +9,17 @@ return {
     local fzf = require("fzf-lua")
 
     fzf.setup({
-      winopts = {
-        height = 0.85,
-        width = 0.80,
-        preview = {
-          layout = "vertical",
-          vertical = "down:45%",
-        },
-      },
       files = {
         formatter = "path.filename_first",
         fd_opts = "--type f --hidden --exclude .git --exclude node_modules --exclude target",
         resume = false,
+        multi = false,
+        keymap = {
+          fzf = {
+            ["tab"] = "down",
+            ["shift-tab"] = "up",
+          },
+        },
         actions = {
           ["default"] = fzf.actions.file_edit,
         },
