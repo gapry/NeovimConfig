@@ -16,6 +16,19 @@ opt.signcolumn = "yes"
 opt.undofile = true
 opt.ignorecase = true
 opt.smartcase = true
+opt.splitright = true
+opt.splitbelow = true
+opt.scrolloff = 8
+opt.cursorline = true
+opt.updatetime = 250
+
+vim.diagnostic.config({
+  virtual_text = true,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+  },
+})
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
