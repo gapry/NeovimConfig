@@ -1,33 +1,68 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
 
-  build = ":TSUpdate",
+    branch = "master",
 
-  -- https://github.com/nvim-lua/kickstart.nvim/pull/1748/changes
-  main = "nvim-treesitter.config",
+    build = ":TSUpdate",
 
-  opts = {
-    -- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
-    ensure_installed = {
-      "cmake",
-      "make",
-      "asm",
-      "c",
-      "cpp",
-      "rust",
-      "go",
-      "zig",
-      "nix",
-      "haskell",
-      "scala",
-      "python",
-      "lua",
-      "bash",
-      "vim",
-      "vimdoc",
+    main = "nvim-treesitter.configs",
+
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    highlight = {
-      enable = true,
+
+    opts = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter/tree/master#supported-languages
+      ensure_installed = {
+        "cmake",
+        "make",
+        "asm",
+        "c",
+        "cpp",
+        "rust",
+        "go",
+        "zig",
+        "nix",
+        "haskell",
+        "scala",
+        "python",
+        "lua",
+        "bash",
+        "vim",
+        "vimdoc",
+      },
+      highlight = {
+        enable = true,
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]f"] = "@function.outer",
+          },
+          goto_previous_start = {
+            ["[f"] = "@function.outer",
+          },
+        },
+      },
     },
   },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+
+    branch = "master",
+  },
 }
+
