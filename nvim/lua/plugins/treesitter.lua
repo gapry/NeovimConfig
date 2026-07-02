@@ -66,4 +66,3 @@ return {
     branch = "master",
   },
 }
-
