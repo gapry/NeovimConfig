@@ -6,6 +6,7 @@ return {
 
     build = ":TSUpdate",
 
+    -- https://github.com/nvim-lua/kickstart.nvim/pull/1748/changes
     main = "nvim-treesitter.configs",
 
     dependencies = {
