@@ -1,5 +1,5 @@
-test:
-	sh ./utils/test.sh
+local:
+	sh ./utils/local.sh
 
 fmt:
 	sh ./utils/format.sh
@@ -7,4 +7,4 @@ fmt:
 install:
 	sh ./utils/install.sh
 
-.PHONY: test fmt install
+.PHONY: local fmt install
