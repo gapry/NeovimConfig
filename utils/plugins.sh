@@ -2,7 +2,7 @@
 
 if ! command -v nvim >/dev/null 2>&1; then
   echo "[ERROR] nvim not found"
-  exit 0
+  exit 1
 fi
 
 echo "Install and sync plugins..."
