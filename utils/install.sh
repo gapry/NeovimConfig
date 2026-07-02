@@ -32,3 +32,10 @@ fi
 
 rm -rf "$TMP_PATH"
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -f "$SCRIPT_DIR/plugins.sh" ]; then
+  sh "$SCRIPT_DIR/plugins.sh"
+else
+  curl -sL "https://raw.githubusercontent.com/gapry/NeovimConfig/main/utils/plugins.sh" | sh
+fi
+
