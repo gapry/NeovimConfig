@@ -74,6 +74,7 @@ return {
           "clangd",
           "rust_analyzer",
           "pyright",
+          "ruff",
           "texlab",
           "jdtls",
         },
@@ -104,6 +105,13 @@ return {
               local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
               vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
             end, { buffer = args.buf, desc = "LSP: Toggle inlay hints" })
+          end
+
+          if client.name == "clangd" then
+            vim.keymap.set("n", "<leader>ch", "<cmd>LspClangdSwitchSourceHeader<CR>", {
+              buffer = args.buf,
+              desc = "C/C++: Switch source/header",
+            })
           end
         end,
       })
