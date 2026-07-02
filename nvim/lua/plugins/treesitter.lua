@@ -10,7 +10,10 @@ return {
     main = "nvim-treesitter.configs",
 
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "master",
+      },
     },
 
     opts = {
@@ -59,10 +62,5 @@ return {
         },
       },
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-
-    branch = "master",
   },
 }
