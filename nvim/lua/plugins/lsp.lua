@@ -1,10 +1,5 @@
 return {
   {
-    "mfussenegger/nvim-jdtls",
-
-    dependencies = { "neovim/nvim-lspconfig", "saghen/blink.cmp" },
-  },
-  {
     "saghen/blink.cmp",
 
     version = "*",
@@ -82,7 +77,11 @@ return {
           "texlab",
           "jdtls",
         },
-        automatic_enable = true,
+        automatic_enable = {
+          exclude = {
+            "rust_analyzer", -- rust_analyzer is managed by rustaceanvim
+          },
+        },
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -92,6 +91,20 @@ return {
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
           vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client == nil then
+            return
+          end
+
+          if client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+
+            vim.keymap.set("n", "<leader>ih", function()
+              local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
+              vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
+            end, { buffer = args.buf, desc = "LSP: Toggle inlay hints" })
+          end
         end,
       })
 
