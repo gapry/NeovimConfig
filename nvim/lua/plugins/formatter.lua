@@ -6,6 +6,7 @@ return {
       c = { "clang_format" },
       cpp = { "clang_format" },
       rust = { "rustfmt" },
+      python = { "ruff_format" },
       lua = { "stylua" },
     },
 
