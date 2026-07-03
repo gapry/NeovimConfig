@@ -99,7 +99,7 @@ return {
           end
 
           if client:supports_method("textDocument/inlayHint") then
-            vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+            vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
 
             vim.keymap.set("n", "<leader>ih", function()
               local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
