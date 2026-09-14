@@ -10,4 +10,8 @@ local:
 install:
 	sh ./utils/install.sh
 
-.PHONY: format local plugins install
+update:
+	nvim --headless "+Lazy! sync" +qa
+	nvim --headless "+TSUpdate" +qa
+
+.PHONY: format local plugins install update
