@@ -47,11 +47,11 @@ return {
     vim.keymap.set("n", "<leader>pw", fzf.grep_cword, { desc = "Grep Word Under Cursor" })
 
     vim.keymap.set("n", "gd", function()
-      require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+      require("fzf-lua").lsp_definitions({ jump1 = true })
     end, { desc = "Jump to Definition" })
 
     vim.keymap.set("n", "gr", function()
-      require("fzf-lua").lsp_references({ jump_to_single_result = true })
+      require("fzf-lua").lsp_references({ jump1 = true })
     end, { desc = "Find References" })
 
     vim.keymap.set("n", "gb", "<C-o>", { desc = "Jump Back" })
