@@ -6,9 +6,34 @@ return {
   lazy = false,
 
   init = function()
+    -- Drop rustaceanvim's multi-line standalone-mode INFO notice (it triggers a hit-enter prompt)
+    local notify = vim.notify
+    vim.notify = function(msg, level, opts)
+      if type(msg) == "string" and level == vim.log.levels.INFO and msg:find("detached/standalone mode", 1, true) then
+        return
+      end
+      return notify(msg, level, opts)
+    end
+
     vim.g.rustaceanvim = {
       server = {
-        default_settings = vim.lsp.config["rust_analyzer"] and vim.lsp.config["rust_analyzer"].settings or nil,
+        settings = function(project_root, default_settings)
+          local base = vim.lsp.config["rust_analyzer"] and vim.lsp.config["rust_analyzer"].settings or {}
+          local settings = vim.tbl_deep_extend("force", default_settings or {}, vim.deepcopy(base))
+
+          -- Single-file (rustc, no Cargo.toml): skip cargo-based checks/metadata to avoid hanging.
+          -- Applied after the merge so nothing from default_settings can re-enable them.
+          if not project_root or vim.fn.filereadable(project_root .. "/Cargo.toml") == 0 then
+            local ra = settings["rust-analyzer"] or {}
+            settings["rust-analyzer"] = ra
+            ra.checkOnSave = false
+            ra.check = nil
+            ra.cargo = { autoreload = false, buildScripts = { enable = false } }
+            ra.procMacro = { enable = false }
+          end
+
+          return settings
+        end,
       },
     }
   end,
