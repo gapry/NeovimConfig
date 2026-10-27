@@ -19,19 +19,20 @@ return {
       server = {
         settings = function(project_root, default_settings)
           local base = vim.lsp.config["rust_analyzer"] and vim.lsp.config["rust_analyzer"].settings or {}
-          local settings = vim.deepcopy(base)
-          local ra = settings["rust-analyzer"] or {}
-          settings["rust-analyzer"] = ra
+          local settings = vim.tbl_deep_extend("force", default_settings or {}, vim.deepcopy(base))
 
-          -- Single-file (rustc, no Cargo.toml): skip cargo-based checks/metadata to avoid hanging
+          -- Single-file (rustc, no Cargo.toml): skip cargo-based checks/metadata to avoid hanging.
+          -- Applied after the merge so nothing from default_settings can re-enable them.
           if not project_root or vim.fn.filereadable(project_root .. "/Cargo.toml") == 0 then
+            local ra = settings["rust-analyzer"] or {}
+            settings["rust-analyzer"] = ra
             ra.checkOnSave = false
+            ra.check = nil
             ra.cargo = { autoreload = false, buildScripts = { enable = false } }
             ra.procMacro = { enable = false }
-            ra.check = nil
           end
 
-          return vim.tbl_deep_extend("force", default_settings or {}, settings)
+          return settings
         end,
       },
     }
