@@ -5,6 +5,7 @@ return {
     "--clang-tidy",
     "--completion-style=detailed",
     "--header-insertion=iwyu",
-    "--function-arg-placeholders",
+    "--function-arg-placeholders=true",
+    "--query-driver=/nix/store/*-clang-wrapper-*/bin/clang++",
   },
 }

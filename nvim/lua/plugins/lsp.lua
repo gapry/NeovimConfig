@@ -69,6 +69,8 @@ return {
     },
 
     config = function()
+      vim.lsp.config("clangd", dofile(vim.fn.stdpath("config") .. "/lsp/clangd.lua"))
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "clangd",
