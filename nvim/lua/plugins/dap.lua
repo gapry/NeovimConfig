@@ -27,6 +27,19 @@ return {
       },
     })
 
+    dap.adapters["gdb-dap"] = {
+      type = "executable",
+      command = "gdb",
+      args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+    }
+
+    dap.adapters["lldb-dap"] = {
+      type = "executable",
+      command = "lldb-dap",
+    }
+
+    dap.defaults.fallback.exception_breakpoints = {}
+
     -- <project_root>/.vscode/launch.json
     dap.configurations.c = {}
     dap.configurations.cpp = {}
